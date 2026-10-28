@@ -1,5 +1,5 @@
-import desktopPortal from "@/assets/samarthx-desktop-portal.png.asset.json";
-import mobilePortal from "@/assets/samarthx-mobile-portal.png.asset.json";
+import desktopPortal from "@/assets/samarthx-desktop.png";
+import mobilePortal from "@/assets/samarthx-mobile.png";
 import { SectionTitle } from "./MarketingSections";
 import { Reveal } from "./Reveal";
 

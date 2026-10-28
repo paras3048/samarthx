@@ -1,10 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, HeartHandshake, Network, Eye } from "lucide-react";
 import communityImage from "@/assets/education-community.jpg";
-import officeIllustration from "@/assets/samarthx-office-illustration-blue.png.asset.json";
-import moeLogo from "@/assets/moe-logo.png.asset.json";
-import ncertLogo from "@/assets/ncert-logo.png.asset.json";
-import duLogo from "@/assets/du-logo.png.asset.json";
+import officeIllustration from "@/assets/samarthx-office.jpeg";
+import moeLogo from "@/assets/moe-logo.png";
+import ncertLogo from "@/assets/ncert-logo.png";
+import duLogo from "@/assets/uod-logo.png";
 import { Counter } from "@/components/Counter";
 import { ContactCTA, SectionTitle } from "@/components/MarketingSections";
 import { Button } from "@/components/ui/button";
