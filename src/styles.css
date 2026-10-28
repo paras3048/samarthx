@@ -1,0 +1,297 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-navy: var(--navy);
+  --color-blue: var(--blue);
+  --color-sky: var(--sky);
+  --color-amber: var(--amber);
+  --color-amber-foreground: var(--amber-foreground);
+  --color-ink: var(--ink);
+  --color-glass: var(--glass);
+  --color-glass-border: var(--glass-border);
+  --color-success: var(--success);
+}
+
+:root {
+  --radius: 0.5rem;
+  --navy: oklch(0.4 0.17 262);        /* #0D43A7 */
+  --blue: oklch(0.58 0.19 258);       /* #1A73E9 */
+  --sky: oklch(0.66 0.16 254);        /* #3B8FF0 */
+  --amber: oklch(0.8 0.17 75);        /* #FFAA01 */
+  --amber-foreground: oklch(0.22 0.05 262);
+  --ink: oklch(0.22 0.05 262);        /* #0B1B3A */
+  --background: oklch(0.98 0.006 260); /* #F7F9FD */
+  --foreground: var(--ink);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--ink);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--ink);
+  --primary: var(--navy);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.95 0.015 258);
+  --secondary-foreground: var(--navy);
+  --muted: oklch(0.95 0.012 258);
+  --muted-foreground: oklch(0.49 0.04 265); /* #5B6784 */
+  --accent: oklch(0.94 0.03 256);
+  --accent-foreground: var(--navy);
+  --destructive: oklch(0.55 0.22 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.91 0.02 258);
+  --input: oklch(0.89 0.02 258);
+  --ring: var(--blue);
+  --success: oklch(0.55 0.13 155);
+  --glass: oklch(1 0 0 / 55%);
+  --glass-border: oklch(1 0 0 / 70%);
+  --shadow-glass: 0 12px 40px -12px color-mix(in oklab, var(--navy) 28%, transparent);
+  --shadow-card: 0 1px 2px color-mix(in oklab, var(--navy) 6%, transparent), 0 16px 40px -20px color-mix(in oklab, var(--navy) 22%, transparent);
+  --shadow-cta: 0 10px 24px -10px color-mix(in oklab, var(--amber) 70%, transparent);
+  --gradient-featured: linear-gradient(145deg, var(--navy), color-mix(in oklab, var(--navy) 70%, var(--blue)));
+  --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
+  --pattern-dots: radial-gradient(color-mix(in oklab, var(--navy) 14%, transparent) 1px, transparent 1.3px);
+  --pattern-grid-horizontal: linear-gradient(color-mix(in oklab, var(--blue) 6%, transparent) 1px, transparent 1px);
+  --pattern-grid-vertical: linear-gradient(90deg, color-mix(in oklab, var(--blue) 6%, transparent) 1px, transparent 1px);
+  --glow-page-blue: radial-gradient(ellipse 55% 38% at 10% -5%, color-mix(in oklab, var(--sky) 10%, transparent), transparent 65%);
+  --glow-page-amber: radial-gradient(ellipse 45% 32% at 95% 105%, color-mix(in oklab, var(--amber) 9%, transparent), transparent 65%);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: auto; }
+  body {
+    background-color: var(--color-background);
+    background-image: var(--pattern-dots), var(--pattern-grid-horizontal), var(--pattern-grid-vertical), var(--glow-page-blue), var(--glow-page-amber);
+    background-size: 24px 24px, 96px 96px, 96px 96px, 100% 100%, 100% 100%;
+    background-attachment: fixed;
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+  section[id] { scroll-margin-top: 110px; }
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--blue);
+  font-weight: 500;
+}
+
+@utility glass {
+  background: var(--glass);
+  backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+}
+
+@utility btn-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--amber);
+  color: var(--amber-foreground);
+  font-weight: 700;
+  border-radius: 9999px;
+  box-shadow: var(--shadow-cta);
+  transition: transform 500ms var(--ease-calm), box-shadow 500ms var(--ease-calm), filter 500ms var(--ease-calm);
+  &:hover { transform: translateY(-1px); filter: brightness(1.04); }
+}
+
+@utility card-surface {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-card);
+}
+
+@utility featured-surface {
+  background: var(--gradient-featured);
+  color: var(--primary-foreground);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-glass);
+}
+
+@utility hero-bg {
+  background-image:
+    radial-gradient(ellipse 60% 50% at 50% 35%, color-mix(in oklab, var(--sky) 18%, transparent), transparent 70%),
+    radial-gradient(color-mix(in oklab, var(--navy) 6%, transparent) 1.2px, transparent 1.2px);
+  background-size: 100% 100%, 22px 22px;
+}
+
+/* Logo draw-on */
+.logo-draw path {
+  stroke: var(--navy);
+  stroke-width: 3;
+  stroke-dasharray: 9000;
+  stroke-dashoffset: 9000;
+  fill-opacity: 0;
+  animation: logo-stroke 1s var(--ease-calm) forwards, logo-fill 0.4s 1s ease-out forwards;
+}
+@keyframes logo-stroke { to { stroke-dashoffset: 0; } }
+@keyframes logo-fill { to { fill-opacity: 1; stroke-width: 0; } }
+
+/* Living stack */
+.flow-line { stroke-dasharray: 4 8; animation: flow 3s linear infinite; }
+@keyframes flow { to { stroke-dashoffset: -48; } }
+.plane-float { animation: plane-float 5s ease-in-out infinite; transform-box: fill-box; }
+@keyframes plane-float { 0%, 100% { transform: translateY(-4px); } 50% { transform: translateY(4px); } }
+.stack-paused .flow-line, .stack-paused .plane-float { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-line, .plane-float { animation: none !important; }
+}
+
+/* Section themes: subtle line work so each section has its own texture */
+@utility theme-guides {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--navy) 7%, transparent) 1px, transparent 1px);
+  background-size: calc(100% / 6) 100%;
+  background-position: center;
+}
+@utility theme-dots {
+  background-image:
+    radial-gradient(ellipse 50% 40% at 85% 10%, color-mix(in oklab, var(--sky) 14%, transparent), transparent 70%),
+    radial-gradient(color-mix(in oklab, var(--navy) 12%, transparent) 1.2px, transparent 1.3px);
+  background-size: 100% 100%, 18px 18px;
+}
+@utility theme-blueprint {
+  background-image:
+    radial-gradient(ellipse 60% 50% at 10% 90%, color-mix(in oklab, var(--amber) 10%, transparent), transparent 70%),
+    linear-gradient(color-mix(in oklab, var(--blue) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--blue) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(color-mix(in oklab, var(--blue) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--blue) 4%, transparent) 1px, transparent 1px);
+  background-size: 100% 100%, 96px 96px, 96px 96px, 24px 24px, 24px 24px;
+}
+@utility theme-stripes {
+  background-image:
+    repeating-linear-gradient(135deg, color-mix(in oklab, var(--primary-foreground) 6%, transparent) 0 1px, transparent 1px 14px),
+    var(--gradient-featured);
+}
+@utility theme-rings {
+  background-image:
+    repeating-radial-gradient(circle at 15% 50%, transparent 0 38px, color-mix(in oklab, var(--blue) 8%, transparent) 38px 39px),
+    radial-gradient(ellipse 50% 60% at 15% 50%, color-mix(in oklab, var(--sky) 10%, transparent), transparent 70%);
+}
+@utility corner-mark {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  transform: translate(-50%, -50%);
+  background:
+    linear-gradient(var(--blue), var(--blue)) center / 1px 100% no-repeat,
+    linear-gradient(var(--blue), var(--blue)) center / 100% 1px no-repeat;
+  opacity: 0.5;
+}
+@utility btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in oklab, var(--navy) 30%, transparent);
+  color: var(--navy);
+  font-weight: 700;
+  transition: background-color 500ms var(--ease-calm), border-color 500ms var(--ease-calm);
+  &:hover { background: var(--accent); border-color: var(--navy); }
+}
+
+:root {
+  --surface-mint: oklch(0.96 0.025 160);
+  --surface-rose: oklch(0.965 0.019 25);
+  --shadow-product: 0 2px 3px color-mix(in oklab, var(--ink) 3%, transparent), 0 24px 64px -24px color-mix(in oklab, var(--navy) 23%, transparent);
+  --gradient-opening: linear-gradient(125deg, color-mix(in oklab, var(--sky) 11%, var(--background)), var(--background) 46%, color-mix(in oklab, var(--amber) 6%, var(--background)));
+  --gradient-footer: linear-gradient(115deg, color-mix(in oklab, var(--sky) 9%, var(--background)), var(--background), color-mix(in oklab, var(--surface-rose) 65%, var(--background)));
+  --gradient-photo: linear-gradient(to top, color-mix(in oklab, var(--ink) 85%, transparent), color-mix(in oklab, var(--ink) 20%, transparent) 65%, transparent);
+}
+.product-opening {
+  background-image: var(--pattern-dots), var(--pattern-grid-horizontal), var(--pattern-grid-vertical), var(--gradient-opening);
+  background-size: 24px 24px, 96px 96px, 96px 96px, 100% 100%;
+}
+.dashboard-shell { background: color-mix(in oklab, var(--card) 78%, transparent); backdrop-filter: blur(18px) saturate(150%); box-shadow: var(--shadow-product), 0 0 90px -28px color-mix(in oklab, var(--blue) 45%, transparent); }
+.preview-tab { background: color-mix(in oklab, var(--card) 62%, transparent); backdrop-filter: blur(14px) saturate(150%); box-shadow: var(--shadow-card); }
+.stat-card { background: color-mix(in oklab, var(--card) 55%, transparent); backdrop-filter: blur(10px) saturate(140%); box-shadow: var(--shadow-card); transition: transform 600ms var(--ease-calm), box-shadow 600ms var(--ease-calm); }
+.stat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
+.connection-node { background: color-mix(in oklab, var(--card) 62%, transparent); backdrop-filter: blur(12px) saturate(140%); transition: transform 600ms var(--ease-calm), box-shadow 600ms var(--ease-calm); }
+.connection-node:hover { transform: translateY(-3px); box-shadow: var(--shadow-card-hover); }
+.mini-window { background: color-mix(in oklab, var(--card) 70%, transparent); backdrop-filter: blur(10px) saturate(140%); padding: 20px; border: 1px solid var(--glass-border); border-radius: 6px; box-shadow: var(--shadow-card); }
+.feature-tile { min-width: 0; padding: 28px; overflow: hidden; border: 1px solid var(--border); border-radius: 8px; transition: transform 600ms var(--ease-calm), box-shadow 600ms var(--ease-calm), border-color 600ms var(--ease-calm); }
+.feature-blue { background: var(--accent); }
+.feature-mint { background: var(--surface-mint); }
+.feature-rose { background: var(--surface-rose); }
+.feature-tile:hover { transform: translateY(-4px); box-shadow: var(--shadow-card-hover); border-color: color-mix(in oklab, var(--blue) 40%, var(--border)); }
+.connection-trunk { width: 75%; height: 52px; margin: 0 auto; border: 1px solid var(--border); border-top: 0; border-radius: 0 0 12px 12px; position: relative; }
+.connection-trunk::after { content: ''; position: absolute; top: 100%; left: 50%; width: 1px; height: 25px; background: var(--border); }
+.connection-map > div:last-child { margin-top: 25px; }
+.site-footer {
+  background-image: var(--pattern-dots), var(--pattern-grid-horizontal), var(--pattern-grid-vertical), var(--gradient-footer);
+  background-size: 24px 24px, 96px 96px, 96px 96px, 100% 100%;
+}
+.footer-wordmark { opacity: 0.14; }
+.site-footer { position: relative; }
+.site-footer::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gradient-brand); opacity: 0.55; }
+.about-scrim { background: var(--gradient-photo); }
+.office-illustration img { mask-image: radial-gradient(ellipse 92% 88% at 50% 48%, #000 62%, transparent 100%); }
+
+:root {
+  --gradient-brand: linear-gradient(100deg, var(--blue), var(--sky) 50%, var(--amber));
+  --gradient-text: linear-gradient(96deg, var(--blue), var(--navy) 45%, var(--amber));
+  --shadow-card-hover: 0 2px 3px color-mix(in oklab, var(--ink) 4%, transparent), 0 28px 56px -20px color-mix(in oklab, var(--blue) 32%, transparent);
+}
+
+@utility text-gradient {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility hero-glow {
+  background-image:
+    radial-gradient(ellipse 55% 45% at 50% 6%, color-mix(in oklab, var(--sky) 16%, transparent), transparent 65%),
+    radial-gradient(ellipse 38% 30% at 88% 42%, color-mix(in oklab, var(--amber) 10%, transparent), transparent 65%),
+    radial-gradient(ellipse 38% 30% at 10% 55%, color-mix(in oklab, var(--blue) 10%, transparent), transparent 65%);
+}
+
+@utility card-gradient {
+  background: linear-gradient(var(--card), var(--card)) padding-box, var(--gradient-brand) border-box;
+  border: 1px solid transparent;
+}
+@media (max-width: 639px) { .feature-tile { padding: 22px; } .about-cover img { object-position: 40% center; } }
+.logo-marquee { mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+.logo-track { display: flex; width: max-content; animation: logo-scroll 28s linear infinite; }
+.logo-marquee:hover .logo-track { animation-play-state: paused; }
+@keyframes logo-scroll { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .logo-track { animation: none; } }
